@@ -1,0 +1,8 @@
+trigger: none
+# - main
+
+pool: newpool1cloud
+
+steps:
+- script: echo Cloud-institution!
+  displayName: 'Run a one-line script'
