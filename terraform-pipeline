@@ -1,0 +1,37 @@
+trigger:
+- main
+
+pool: 'Default'
+
+stages:
+- stage: init
+  displayName: 'Terraform init'
+  jobs:
+  - job: Terraforminit
+    displayName: 'Terraform init'
+    steps:
+    - script: |
+        terraform --version
+        terraform init
+      displayName: 'version and init'
+
+- stage: Plan
+  displayName: 'Terraform Plan'
+  jobs:
+  - job: TerraformPlan
+    displayName: 'Terraform Plan'
+    steps:
+    - script: |
+        terraform validate
+        terraform plan
+      displayName: 'version and plan'
+
+- stage: Deploy
+  displayName: 'Terraform Apply'
+  jobs:
+  - job: TerraformApply
+    displayName: 'Terraform Apply'
+    steps:
+    - script: |
+        terraform apply
+      displayName: 'Terraform apply'
